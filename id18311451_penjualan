@@ -1,0 +1,387 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 14, 2022 at 04:35 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `id18311451_penjualan`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `id_berita` int(5) UNSIGNED NOT NULL,
+  `id_kategori` int(3) UNSIGNED NOT NULL DEFAULT 0,
+  `judul` varchar(100) NOT NULL DEFAULT '',
+  `headline` text NOT NULL,
+  `isi` text NOT NULL,
+  `pengirim` varchar(15) NOT NULL DEFAULT '',
+  `linkfoto` varchar(255) NOT NULL DEFAULT '',
+  `tanggal` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id_berita`, `id_kategori`, `judul`, `headline`, `isi`, `pengirim`, `linkfoto`, `tanggal`) VALUES
+(12, 1, 'Harga VGA Naik Drastis', 'Bitcoin Miner Mendominasi Market', 'Harga VGA pada masa pandemi ini selalu saja naik karena adanya miner yang merusak harga market vga. oleh karena itu banyak sekali para gamer atau techsavvy yang mencari - cari alternatif harga yang dibawah pasaran\r\n', 'Admin M', 'https://fintexnews.com/wp-content/uploads/2021/08/VGA-Card-890x450.png', '2022-01-06 14:31:12'),
+(14, 1, 'Udinus Mendapat Super Komputer', 'Mantab betul udinus dapat komputer super cepat', 'Mantab betul udinus dapat komputer super cepatMantab betul udinus dapat komputer super cepatMantab betul udinus dapat komputer super cepatMantab betul udinus dapat komputer super cepatMantab betul udinus dapat komputer super cepat\r\n', 'Luthfi', 'https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1635936708/ssbfilay2esflfad8ixh.jpg', '2022-01-19 19:01:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bukutamu`
+--
+
+CREATE TABLE `bukutamu` (
+  `id` int(10) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `situs` varchar(30) NOT NULL,
+  `pesan` text NOT NULL,
+  `waktu` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bukutamu`
+--
+
+INSERT INTO `bukutamu` (`id`, `nama`, `email`, `situs`, `pesan`, `waktu`) VALUES
+(2, 'najwa aulia', 'najwa@gmail.com', 'najwa.com', 'haiiii', '2017-12-08 10:49:45'),
+(3, 'paijo', 'paijo@gmail.com', 'http://paijo.com', 'holllaaaaa', '2017-12-08 11:08:41'),
+(11, 'Mifta', 'mifta@mail.com', 'masku.com', 'nama saya mifta asya nonton saja', '2022-01-06 22:33:10'),
+(17, 'Anisa', 'testi@gmail.com', 'ans.com', 'Halo saya numpang lewat', '2022-01-06 22:52:24'),
+(18, 'Ambarwati Sulistyo Warsito', 'ambsw@mail.com', 'ambsw.us.id', 'Webnya jualan ya ini atau gimana?', '2022-01-06 22:54:17'),
+(19, 'Luthfi Kamal', 'luthfi@mail.com', 'luthfisambongrejo.com', 'Halo saya dari desa Wonorejo Sari', '2022-01-19 18:52:50'),
+(22, 'Sukirman', 'sukir@mail.com', 'sukasukasukir.com', 'Halo saya disini untuk mengetes Buku Tamu', '2022-01-19 19:27:25'),
+(24, 'Mifta', 'tesemail@gmail.com', 'masku.com', 'Halo nama saya mifta', '2022-01-19 19:33:20'),
+(25, 'ANIS TRISNIAWATI', 'anistrisn@gmail.com', '8282dot.com', 'Amajing', '2022-01-21 15:21:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori`
+--
+
+CREATE TABLE `kategori` (
+  `id_kategori` int(3) UNSIGNED NOT NULL,
+  `nm_kategori` varchar(30) NOT NULL DEFAULT '',
+  `deskripsi` varchar(200) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nm_kategori`, `deskripsi`) VALUES
+(1, 'Teknologi', 'Berita seputar teknologi yang baru'),
+(3, 'Sports', 'Berita tentang sports');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori_produk`
+--
+
+CREATE TABLE `kategori_produk` (
+  `id` int(3) UNSIGNED NOT NULL,
+  `nama` varchar(10) NOT NULL,
+  `deskripsi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kategori_produk`
+--
+
+INSERT INTO `kategori_produk` (`id`, `nama`, `deskripsi`) VALUES
+(1, 'Makanan', 'Makanan unik dari desa sambongrejo'),
+(2, 'Minuman', 'Minuman unik dari desa sambongrejo'),
+(3, 'Kerajinan', 'Kerajinan unik dari desa sambongrejo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kosongan`
+--
+
+CREATE TABLE `kosongan` (
+  `qwe` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesan`
+--
+
+CREATE TABLE `pesan` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `pembeli` varchar(60) NOT NULL,
+  `id_produk` int(5) NOT NULL,
+  `nama_produk` varchar(255) NOT NULL,
+  `jumlah` int(10) NOT NULL,
+  `catatan` text NOT NULL,
+  `alamat` text NOT NULL,
+  `total_harga` int(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pesan`
+--
+
+INSERT INTO `pesan` (`id`, `pembeli`, `id_produk`, `nama_produk`, `jumlah`, `catatan`, `alamat`, `total_harga`) VALUES
+(49, 'Luthfi', 1, 'Onde - Onde Khas Sambong', 10, 'Minta isi Jahe', 'Jl. Bukit Wetan 13 no 14', 100000),
+(50, 'Jaka', 23, 'Klepon Khas Sambong', 3, 'Request warna ungu', 'Jl. Jendral Sudirman 13', 22500),
+(53, 'Luthfi', 18, 'Patung Plakat Semar', 19, 'Tolong diberikan stand', 'Jl. Merdeka Raya Nomor 21', 2280000),
+(54, 'Paijo', 17, 'Jenang Grendul Khas Sambong', 5, 'Tolong packing yang aman', 'Jl. Selatan Timur Nomor 91', 225000),
+(56, 'Anis', 23, 'Klepon Khas Sambong', 12, 'Yang bagus', 'Jl. Ungaran', 90000),
+(57, 'Luthfi', 17, 'Jenang Grendul Khas Sambong', 3, 'ok', 'ok', 135000),
+(58, 'Luthfi', 1, 'Onde - Onde Khas ABC', 2, '', '', 20000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk`
+--
+
+CREATE TABLE `produk` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `id_kategori` int(1) NOT NULL,
+  `nama` text NOT NULL,
+  `harga` int(7) NOT NULL,
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id`, `id_kategori`, `nama`, `harga`, `foto`) VALUES
+(1, 1, 'Onde - Onde Khas ABC', 10000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.resepkekinian.com%2Fwp-content%2Fuploads%2F2021%2F04%2FOnde-onde-Kacang-Hijau.jpg&f=1&nofb=1'),
+(16, 2, 'Wedang Ronde Khas ABC', 25000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd99i6ad9lbm5v.cloudfront.net%2Fuploads%2Fimage%2Ffile%2F3616%2Fwedang-ronde.jpg&f=1&nofb=1'),
+(17, 1, 'Jenang Grendul Khas ABC', 45000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffoodnesia.net%2Fwp-content%2Fuploads%2F2019%2F12%2Fjenang-grendul-tulungagung.jpg&f=1&nofb=1'),
+(18, 3, 'Patung Plakat Semar', 120000, 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F-uD3oGyqiZZA%2FVaesuiXFvQI%2FAAAAAAAAAbg%2FolXFlAVGvaI%2Fs1600%2Fplakat-souvenir-wayang-semar.jpg&f=1&nofb=1'),
+(20, 2, 'Es Pisang Ijo Khas ABC', 40000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fmakassarkuliner.com%2Fwp-content%2Fuploads%2F2017%2F07%2Fpisangijowarunkresto-kupang.jpg%3Ffit%3D1000%252C1000%26ssl%3D1&f=1&nofb=1'),
+(21, 3, 'Lampu Meja Batok Kelapa', 90000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F-XNyazdp5GfU%2FWawSjxdHo2I%2FAAAAAAAACAg%2Fo4Gde99MhPMF5Jg0yO6iWnY2nFcW7LmEgCLcBGAs%2Fs1600%2Fkerajinan%252Btangan%252Blimbah%252Bbatok%252Bkelapa.jpg&f=1&nofb=1'),
+(22, 3, 'Topeng Barong', 50000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcf.shopee.co.id%2Ffile%2F93768e547770b9d5340d38c8a27caeb6&f=1&nofb=1'),
+(23, 1, 'Klepon Khas ABC', 7500, 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-MTGOQjaC8cQ%2FUeK1BjJbKgI%2FAAAAAAAAAO4%2FsGHpQrc4dWc%2Fs1600%2Fresep-klepon.jpg&f=1&nofb=1'),
+(28, 2, 'Es Teh', 3000, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tehsariwangi.com%2Fuploads%2Far%2Farticle%2F411%2F534206a1a98f74d0dd5b195c88a31dc3.jpg&f=1&nofb=1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(5) NOT NULL,
+  `user_id` varchar(30) DEFAULT NULL,
+  `passwd` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `user_id`, `passwd`) VALUES
+(1, 'ajib', '827ccb0eea8a706c4c34a16891f84e7b'),
+(2, 'Luthfi Kamal Ananda', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_guest`
+--
+
+CREATE TABLE `user_guest` (
+  `id` int(5) NOT NULL,
+  `user_id` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `alamat` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_guest`
+--
+
+INSERT INTO `user_guest` (`id`, `user_id`, `password`, `alamat`) VALUES
+(1, 'Luthfi', '123', 'Jl. GG Gemink 200 No. 21'),
+(2, 'Angga', '123', 'Jl. Ampera Raya 10'),
+(4, 'Mas Joko', '123', 'Jl. Jokondo Kondo 13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video`
+--
+
+CREATE TABLE `video` (
+  `id` int(5) NOT NULL,
+  `linkvid` varchar(30) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `creator` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `video`
+--
+
+INSERT INTO `video` (`id`, `linkvid`, `judul`, `creator`) VALUES
+(2, 'MMjnceXzhkc', 'Koding List ADT Kalkulator Berat Badan Optimal | UDINUS UAS Smt II |', 'LUTHFI ANANDA'),
+(4, 'd_S0rz6C7s4', 'Kenapa Harus Udinus | Udinus Content Creator Award 2021 |', 'LUTHFI ANANDA'),
+(8, '86F_-7TrwIc', 'DINUS INSIDE FIK 2018 - Make Perfection With Collaboration', ' Dinus Inside FIK'),
+(9, 'bdQe-JWdQpc', 'Gara-Gara Jual Foto Selfi, Ghozali Mahasiswa Udinus! Mendadak Milyader!!!', 'TVKU ch49 Universitas Dian Nus'),
+(10, 'K5QZt8xcWvI', 'Isu Dipinang Tim Korsel, Pratama Arhan Kalem', 'TVKU ch49 Universitas Dian Nus'),
+(14, 'hdI2bqOjy3c', 'JavaScript Crash Course For Beginners', 'Traversy Media');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indexes for table `bukutamu`
+--
+ALTER TABLE `bukutamu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `kategori_produk`
+--
+ALTER TABLE `kategori_produk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kosongan`
+--
+ALTER TABLE `kosongan`
+  ADD PRIMARY KEY (`qwe`);
+
+--
+-- Indexes for table `pesan`
+--
+ALTER TABLE `pesan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_guest`
+--
+ALTER TABLE `user_guest`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id_berita` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `bukutamu`
+--
+ALTER TABLE `bukutamu`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `kategori_produk`
+--
+ALTER TABLE `kategori_produk`
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `kosongan`
+--
+ALTER TABLE `kosongan`
+  MODIFY `qwe` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pesan`
+--
+ALTER TABLE `pesan`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT for table `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_guest`
+--
+ALTER TABLE `user_guest`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `video`
+--
+ALTER TABLE `video`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
